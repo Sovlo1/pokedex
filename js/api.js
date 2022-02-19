@@ -55,7 +55,7 @@ const pokemonCall = function () {
         ) {
           pokemonAbout.textContent = "This pokemon does not exist"
           pokemonSprite.appendChild(img);
-          img.src = "/img/missingno.png";
+          img.src = "img/missingno.png";
         }
       }
     });
