@@ -42,6 +42,7 @@ const pokemonCall = function () {
             .then((pkmnSprite) => {
               return pkmnSprite.json();
             })
+            //.then((test) => console.log(test))
             .then((pokemonImage) => {
               pokemonSprite.appendChild(img);
               img.src = pokemonImage.sprites.front_default;

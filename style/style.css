@@ -21,6 +21,7 @@ h1 {
 }
 
 .pokemon__pokedex {
+    text-align: center;
     position: relative;
     display: block;
     margin: 0 auto 0 auto;
@@ -57,6 +58,7 @@ h1 {
 } 
 
 #pokemon__sprite {
+    transform: scale(2);
     position:absolute;
     top: 250px;
     left: 250px;
