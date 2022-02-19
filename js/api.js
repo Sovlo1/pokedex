@@ -6,13 +6,17 @@ let pokemonType2 = document.getElementById("pokemon__type__2");
 let pokemonSprite = document.getElementById("pokemon__sprite");
 let pokemonSearchInput = document.getElementById("search__bar__input");
 let pokemonSearchButton = document.getElementById("search__bar__button");
+let pokemonAbout = document.getElementById("pokemon__about")
 let img = document.createElement("img");
 
 const clear = async function () {
   pokemonName.textContent = "";
   pokemonType1.textContent = "";
   pokemonType2.textContent = "";
-  //pokemonSprite.removeChild(img);
+  pokemonAbout.textContent = "";
+  if (pokemonSprite.hasChildNodes()) {
+  pokemonSprite.removeChild(img);
+  }
 };
 
 const pokemonCall = function () {
@@ -33,9 +37,14 @@ const pokemonCall = function () {
                 pokemonType1.textContent = pkmnTypes.types[0].type.name;
                 pokemonType2.textContent = pkmnTypes.types[1].type.name;
               }
-            })
+            });
+          fetch(pokemonNames.results[i].url)
             .then((pkmnSprite) => {
               return pkmnSprite.json();
+            })
+            .then((pokemonImage) => {
+              pokemonSprite.appendChild(img);
+              img.src = pokemonImage.sprites.front_default;
             });
           break;
         } else if (
@@ -43,7 +52,9 @@ const pokemonCall = function () {
           pokemonSearchInput.value.toLowerCase() !=
             pokemonNames.results[i - 1].name
         ) {
-          console.log("This pokemon does not exist");
+          pokemonAbout.textContent = "This pokemon does not exist"
+          pokemonSprite.appendChild(img);
+          img.src = "/img/missingno.png";
         }
       }
     });
@@ -53,5 +64,3 @@ pokemonSearchButton.addEventListener("click", function () {
   clear();
   pokemonCall();
 });
-
-//.then((test) => console.log(test))
