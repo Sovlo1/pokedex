@@ -74,6 +74,7 @@ h1 {
 } 
 
 .search__bar {
+    display: flex;
     margin: auto;
     width: 500px;
     text-align: center;
