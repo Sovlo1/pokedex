@@ -33,22 +33,15 @@ const searchPokemon = function () {
     .then((res) => res.json())
     //.then((test) => console.log(test))
     .then((pkmnInfo) => {
-      if (!pkmnInfo.types[1]) {
         pokemonName.textContent = pkmnInfo.name.toUpperCase();
         pokemonType1.textContent = pkmnInfo.types[0].type.name.toUpperCase();
+        if (pkmnInfo.types[1]) {
+        pokemonType2.textContent = pkmnInfo.types[1].type.name.toUpperCase();  
+        }
         pokemonHeight.textContent = pkmnInfo.height / 10 + " m"
         pokemonWeight.textContent = pkmnInfo.weight / 10 + " kg"
         pokemonSprite.appendChild(img);
         img.src = pkmnInfo.sprites.front_default;
-      } else {
-        pokemonName.textContent = pkmnInfo.name.toUpperCase();
-        pokemonType1.textContent = pkmnInfo.types[0].type.name.toUpperCase();
-        pokemonType2.textContent = pkmnInfo.types[1].type.name.toUpperCase();
-        pokemonHeight.textContent = pkmnInfo.height / 10 + " m"
-        pokemonWeight.textContent = pkmnInfo.weight / 10 + " kg"
-        pokemonSprite.appendChild(img);
-        img.src = pkmnInfo.sprites.front_default;
-      }
     })
     .catch((err) => {
       pokemonAbout.textContent = "This pokemon does not exist.";
@@ -61,3 +54,16 @@ pokemonSearchButton.addEventListener("click", function () {
   clear();
   searchPokemon();
 });
+
+/*let fetchedResults
+
+const searchPokemon = async function () {
+  await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonSearchInput.value.toLowerCase()}`)
+    .then((res) => res.json())
+    .then((test) => fetchedResults = test)
+}
+
+pokemonSearchButton.addEventListener("click", async function () {
+    await searchPokemon();
+    console.log(fetchedResults);
+})*/
