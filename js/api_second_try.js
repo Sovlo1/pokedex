@@ -55,6 +55,12 @@ pokemonSearchButton.addEventListener("click", function () {
   searchPokemon();
 });
 
+
+
+//----------------------------
+//------------WIP-------------
+//----------------------------
+
 /*let fetchedResults
 
 const searchPokemon = async function () {
