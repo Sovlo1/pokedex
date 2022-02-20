@@ -31,6 +31,7 @@ const clear = function () {
 const searchPokemon = function () {
   fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonSearchInput.value.toLowerCase()}`)
     .then((res) => res.json())
+    //.then((test) => console.log(test))
     .then((pkmnInfo) => {
       if (!pkmnInfo.types[1]) {
         pokemonName.textContent = pkmnInfo.name.toUpperCase();
