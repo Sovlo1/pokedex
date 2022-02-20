@@ -1,5 +1,7 @@
 // API related stuff here
 
+
+//Déclarer tous les éléments à remplir/créer
 let pokemonName = document.getElementById("pokemon__name");
 let pokemonType1 = document.getElementById("pokemon__type__1");
 let pokemonType2 = document.getElementById("pokemon__type__2");
@@ -11,15 +13,20 @@ let pokemonSearchButton = document.getElementById("search__bar__button");
 let pokemonAbout = document.getElementById("pokemon__about");
 let img = document.createElement("img");
 
+/*Fonction pour effacer chaque élément pour éviter les fausses informations
+Par exemple : afficher deux types sur un pokemon n'en ayant qu'un*/
 const clear = function () {
   pokemonName.textContent = "";
   pokemonType1.textContent = "";
   pokemonType2.textContent = "";
   pokemonAbout.textContent = "";
+  pokemonHeight.textContent = "";
+  pokemonWeight.textContent = "";
   if (pokemonSprite.hasChildNodes()) {
     pokemonSprite.removeChild(img);
   }
 };
+
 
 const searchPokemon = function () {
   fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonSearchInput.value.toLowerCase()}`)
