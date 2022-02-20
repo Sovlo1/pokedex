@@ -75,6 +75,27 @@ h1 {
     height: 60px;
 } 
 
+#pokemon__height {
+    font-size: 30px;
+    position:absolute;
+    top: 379px;
+    left: 720px;
+    z-index: 999;
+    width: 200px;
+    height: 40px;
+} 
+
+#pokemon__weight {
+    font-size: 30px;
+    position:absolute;
+    top: 430px;
+    left: 720px;
+    z-index: 999;
+    width: 200px;
+    height: 40px;
+} 
+
+
 .search__bar {
     display: flex;
     margin: auto;

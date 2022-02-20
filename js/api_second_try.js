@@ -4,6 +4,8 @@ let pokemonName = document.getElementById("pokemon__name");
 let pokemonType1 = document.getElementById("pokemon__type__1");
 let pokemonType2 = document.getElementById("pokemon__type__2");
 let pokemonSprite = document.getElementById("pokemon__sprite");
+let pokemonHeight = document.getElementById("pokemon__height");
+let pokemonWeight = document.getElementById("pokemon__weight");
 let pokemonSearchInput = document.getElementById("search__bar__input");
 let pokemonSearchButton = document.getElementById("search__bar__button");
 let pokemonAbout = document.getElementById("pokemon__about");
@@ -20,26 +22,28 @@ const clear = function () {
 };
 
 const searchPokemon = function () {
-  fetch(
-    `https://pokeapi.co/api/v2/pokemon/${pokemonSearchInput.value.toLowerCase()}`
-  )
+  fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonSearchInput.value.toLowerCase()}`)
     .then((res) => res.json())
     .then((pkmnInfo) => {
       if (!pkmnInfo.types[1]) {
-        pokemonName.textContent = pkmnInfo.name;
-        pokemonType1.textContent = pkmnInfo.types[0].type.name;
+        pokemonName.textContent = pkmnInfo.name.toUpperCase();
+        pokemonType1.textContent = pkmnInfo.types[0].type.name.toUpperCase();
+        pokemonHeight.textContent = pkmnInfo.height / 10 + " m"
+        pokemonWeight.textContent = pkmnInfo.weight / 10 + " kg"
         pokemonSprite.appendChild(img);
         img.src = pkmnInfo.sprites.front_default;
       } else {
-        pokemonName.textContent = pkmnInfo.name;
-        pokemonType1.textContent = pkmnInfo.types[0].type.name;
-        pokemonType2.textContent = pkmnInfo.types[1].type.name;
+        pokemonName.textContent = pkmnInfo.name.toUpperCase();
+        pokemonType1.textContent = pkmnInfo.types[0].type.name.toUpperCase();
+        pokemonType2.textContent = pkmnInfo.types[1].type.name.toUpperCase();
+        pokemonHeight.textContent = pkmnInfo.height / 10 + " m"
+        pokemonWeight.textContent = pkmnInfo.weight / 10 + " kg"
         pokemonSprite.appendChild(img);
         img.src = pkmnInfo.sprites.front_default;
       }
     })
     .catch((err) => {
-      pokemonAbout.textContent = "This pokemon does not exist";
+      pokemonAbout.textContent = "This pokemon does not exist.";
       pokemonSprite.appendChild(img);
       img.src = "img/missingno.png";
     });
