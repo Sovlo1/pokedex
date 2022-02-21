@@ -20,6 +20,10 @@ h1 {
     margin: 0 auto 0 auto;
 }
 
+p {
+    margin: 0;
+}
+
 .pokemon__pokedex {
     text-align: center;
     position: relative;
@@ -105,4 +109,8 @@ h1 {
 
 .search__bar__input {
     width: 100%;
+}
+
+#previous__next__buttons {
+    text-align: center;
 }

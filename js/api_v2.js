@@ -1,6 +1,5 @@
 // API related stuff here
 
-
 //Déclarer tous les éléments à remplir/créer
 let pokemonName = document.getElementById("pokemon__name");
 let pokemonType1 = document.getElementById("pokemon__type__1");
@@ -11,7 +10,9 @@ let pokemonWeight = document.getElementById("pokemon__weight");
 let pokemonSearchInput = document.getElementById("search__bar__input");
 let pokemonSearchButton = document.getElementById("search__bar__button");
 let pokemonAbout = document.getElementById("pokemon__about");
+let previousNextPokemon = document.getElementById("previous__next__buttons");
 let img = document.createElement("img");
+let button = document.createElement("div");
 
 /*Fonction pour effacer chaque élément pour éviter les fausses informations
 Par exemple : afficher deux types sur un pokemon n'en ayant qu'un*/
@@ -25,8 +26,10 @@ const clear = function () {
   if (pokemonSprite.hasChildNodes()) {
     pokemonSprite.removeChild(img);
   }
+  if (previousNextPokemon.hasChildNodes()) {
+    previousNextPokemon.removeChild(button);
+  }
 };
-
 
 const searchPokemon = function () {
   fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonSearchInput.value.toLowerCase()}`)
@@ -56,20 +59,3 @@ pokemonSearchButton.addEventListener("click", function () {
 });
 
 
-
-//----------------------------
-//------------WIP-------------
-//----------------------------
-
-/*let fetchedResults
-
-const searchPokemon = async function () {
-  await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonSearchInput.value.toLowerCase()}`)
-    .then((res) => res.json())
-    .then((test) => fetchedResults = test)
-}
-
-pokemonSearchButton.addEventListener("click", async function () {
-    await searchPokemon();
-    console.log(fetchedResults);
-})*/
