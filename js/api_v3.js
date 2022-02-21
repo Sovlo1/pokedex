@@ -85,8 +85,8 @@ const addButtons = function () {
 const previousButtonClick = async function () {
   grabId = fetchedResults.id;
   console.log(grabId);
-  for (i = grabId; i > grabId-1; i--) {
-  fetch(`https://pokeapi.co/api/v2/pokemon/${i}`)
+  for (grabId; grabId > 0; grabId--) {
+  await fetch(`https://pokeapi.co/api/v2/pokemon/${grabId}`)
     .then((res) => res.json())
     .then((pkmnInfo) => {
       console.log(grabId);
