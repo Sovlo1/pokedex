@@ -24,9 +24,9 @@ const clear = function () {
   if (pokemonSprite.hasChildNodes()) {
     pokemonSprite.removeChild(img);
   }
-  if (previousNextPokemon.hasChildNodes()) {
-    previousNextPokemon.removeChild(button);
-  }
+  //if (previousNextPokemon.hasChildNodes()) {
+  //  previousNextPokemon.removeChild(button);
+  //}
 };
 
 let fetchedResults;
@@ -74,20 +74,22 @@ const addButtons = function () {
   pokemonPrevious.addEventListener("click", async function () {
     clear();
     await previousButtonClick();
-    if (pokemonAbout.textContent != "This pokemon does not exist.") {
-      previousNextPokemon.appendChild(button);
-      button.innerHTML = `<button class="previous__button" id="previous__button">Previous pokemon</button>
-      <button class="next__button" id="next__button">Next pokemon</button>`;
-    }
+    //if (pokemonAbout.textContent != "This pokemon does not exist.") {
+     // previousNextPokemon.appendChild(button);
+      //button.innerHTML = `<button class="previous__button" id="previous__button">Previous pokemon</button>
+      //<button class="next__button" id="next__button">Next pokemon</button>`;
+      //button.innerHTML = "toto";
+    
   });
 };
 
 const previousButtonClick = async function () {
   grabId = fetchedResults.id;
-  console.log(grabId);
-  for (grabId; grabId > 0; grabId--) {
+  console.log("Hello", grabId);
+  grabId -= 1;
   await fetch(`https://pokeapi.co/api/v2/pokemon/${grabId}`)
     .then((res) => res.json())
+    .then((contenu) => fetchedResults = contenu)
     .then((pkmnInfo) => {
       console.log(grabId);
       pokemonName.textContent = pkmnInfo.name.toUpperCase();
@@ -105,5 +107,4 @@ const previousButtonClick = async function () {
       pokemonSprite.appendChild(img);
       img.src = "img/missingno.png";
     });
-  }
 };
